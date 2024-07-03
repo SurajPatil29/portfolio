@@ -1,6 +1,7 @@
 import { Box, HStack, Menu, MenuButton, MenuList, MenuItem, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon, AddIcon, ExternalLinkIcon, RepeatIcon, EditIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "@chakra-ui/react";
+import Resume from "../../Sections/Resume";
 
 
 
@@ -18,7 +19,7 @@ function Navbar() {
               <a href="#project" > Project </a>
 
               <a href="#contact" > Contact </a>
-              <a href="#resume" >Resume</a>
+              <Resume />
 
             </HStack>
           ) : (
