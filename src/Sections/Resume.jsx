@@ -3,7 +3,7 @@ import React from 'react'
 
 function Resume() {
   const downloadResume = () => {
-    window.location.href = 'https://drive.google.com/uc?export=download&id=1JpFHtZC5K8EsJv5iWyuyT36Er95KGnM5';
+    window.location.href = 'https://drive.google.com/uc?export=download&id=10licJK7TbuIdn3Mv53Be0MV2iJIz-FKO';
   };
   return (
     <Button onClick={downloadResume}>Resume</Button>
