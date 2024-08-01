@@ -24,7 +24,7 @@ function Project() {
   }
 
   return (
-    <Box id='project' p={{ base: "10% 5%", md: "10% 0" }}>
+    <Box id='project' p={{ base: "25% 5%", md: "10% 0" }}>
       <Heading as='h4' size='xl' textAlign="center" fontFamily='"Oswald", sans-serif' p="5%">Projects</Heading>
 
       <Grid

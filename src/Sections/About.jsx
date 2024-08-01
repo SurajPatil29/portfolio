@@ -16,7 +16,7 @@ function About() {
   return (
     <Flex
       id='about'
-      p={{ base: "10% 2%", md: "10% 0" }}
+      p={{ base: "25% 2%", md: "10% 0" }}
       justifyContent="center"
     >
       <Box textAlign="center"  w="100%">

@@ -8,11 +8,11 @@ import github from "../assets/developer.png";
 
 function Skill() {
   return (
-    <Box p={{ base: "10% 5%", md: "10% 0" }}>
+    <Box  id='skill' p={{ base: "25% 5%", md: "10% 0" }}>
       <Heading as='h4' size='xl' textAlign="center" fontFamily='"Oswald", sans-serif' p="5%">Skill</Heading>
 
       <Grid
-        id='skill'
+       
         templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}
         gap={6}
         p="5%"
