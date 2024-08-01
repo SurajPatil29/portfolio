@@ -7,6 +7,7 @@ import Resume from "../../Sections/Resume";
 
 function Navbar() {
   const [isLargeThan750] = useMediaQuery("(min-width: 750px)")
+  const resumeDownload = "https://drive.google.com/uc?export=download&id=10licJK7TbuIdn3Mv53Be0MV2iJIz-FKO"
   return (
     <>
       <Box display="flex" p={4} >
@@ -47,7 +48,7 @@ function Navbar() {
                 <MenuItem as="a" href="#contact" icon={<ExternalLinkIcon />}>
                   Contact
                 </MenuItem>
-                <MenuItem as="a" href="#resume" icon={<EditIcon />}>
+                <MenuItem as="a" href={resumeDownload} icon={<EditIcon />}>
                   Resume
                 </MenuItem>
               </MenuList>
