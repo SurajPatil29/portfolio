@@ -1,51 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Text } from '@chakra-ui/react';
+import { useEffect, useState } from "react";
 
 function TypeWriter({ text }) {
-    const [displayText, setDisplayText] = useState("");
-    const [currIndex, setCurrIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
+	const [displayText, setDisplayText] = useState("");
+	const [index, setIndex] = useState(0);
+	const [isDeleting, setIsDeleting] = useState(false);
 
-    useEffect(() => {
-        const typeSpeed = 250; // Adjust typing speed in milliseconds
-        const deleteSpeed = 100; // Adjust deleting speed in milliseconds
-        let timeout;
+	useEffect(() => {
+		const speed = isDeleting ? 100 : 200;
 
-        if (!isDeleting && currIndex < text.length) {
-            timeout = setTimeout(() => {
-                setDisplayText((prev) => prev + text[currIndex]);
-                setCurrIndex((prev) => prev + 1);
-            }, typeSpeed);
-        } else if (isDeleting && currIndex >= 0) {
-            timeout = setTimeout(() => {
-                setDisplayText((prev) => prev.slice(0, -1));
-                setCurrIndex((prev) => prev - 1);
-            }, deleteSpeed);
-        }
+		const timer = setTimeout(() => {
+			if (!isDeleting && index < text.length) {
+				setDisplayText((prev) => prev + text[index]);
+				setIndex((prev) => prev + 1);
+			} else if (isDeleting && index > 0) {
+				setDisplayText((prev) => prev.slice(0, -1));
+				setIndex((prev) => prev - 1);
+			} else if (index === text.length) {
+				setIsDeleting(true);
+			} else if (index === 0) {
+				setIsDeleting(false);
+			}
+		}, speed);
 
-        // Clear timeout on component unmount or when currIndex or isDeleting changes
-        return () => clearTimeout(timeout);
-    }, [currIndex, text, isDeleting]);
+		return () => clearTimeout(timer);
+	}, [index, isDeleting, text]);
 
-    // Start deleting text after typing completes
-    useEffect(() => {
-        if (currIndex === text.length) {
-            setIsDeleting(true);
-        } else if (isDeleting && currIndex === 0) {
-            setIsDeleting(false);
-        }
-    }, [currIndex, text.length, isDeleting]);
-
-    return (
-        <Text 
-            p={4} 
-            fontSize={{ base: 'lg', md: '2xl', lg: '3xl' }} 
-            color="green" 
-            fontFamily="'JetBrains Mono', monospace"
-        >
-            {displayText}|
-        </Text>
-    );
+	return (
+		<p
+			className="
+        p-4 
+        text-lg 
+        md:text-2xl 
+        lg:text-3xl 
+        font-mono code-font text-red-500
+      "
+		>
+			{displayText}|
+		</p>
+	);
 }
 
 export default TypeWriter;

@@ -1,80 +1,81 @@
-import { Box, Text, Grid, Image, Heading } from '@chakra-ui/react';
-import React from 'react';
-import html from "../assets/html.png";
-import css from "../assets/css-3.png";
-import javascript from "../assets/javascript.png";
-import react from "../assets/atom.png";
-import github from "../assets/developer.png";
+import {
+	FaHtml5,
+	FaCss3Alt,
+	FaJs,
+	FaReact,
+	FaNodeJs,
+	FaGithub,
+} from "react-icons/fa";
+import { SiVercel, SiRender } from "react-icons/si";
+import { SiExpress, SiMongodb, SiTailwindcss } from "react-icons/si";
 
 function Skill() {
-  return (
-    <Box  id='skill' p={{ base: "25% 5%", md: "10% 0" }}>
-      <Heading as='h4' size='xl' textAlign="center" fontFamily='"Oswald", sans-serif' p="5%">Skill</Heading>
+	const skillGroups = {
+		Frontend: [
+			{ name: "HTML", icon: <FaHtml5 /> },
+			{ name: "CSS", icon: <FaCss3Alt /> },
+			{ name: "JavaScript", icon: <FaJs /> },
+			{ name: "React", icon: <FaReact /> },
+			{ name: "Tailwind CSS", icon: <SiTailwindcss /> },
+		],
+		Backend: [
+			{ name: "Node.js", icon: <FaNodeJs /> },
+			{ name: "Express.js", icon: <SiExpress /> },
+			{ name: "MongoDB", icon: <SiMongodb /> },
+		],
+		Tools: [
+			{ name: "GitHub", icon: <FaGithub /> },
+			{ name: "Vercel", icon: <SiVercel /> },
+			{ name: "Render", icon: <SiRender /> },
+		],
+	};
 
-      <Grid
-       
-        templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}
-        gap={6}
-        p="5%"
-      >
-        <Box
-          bg="RGBA(0, 0, 0, 0.08)"
-          cursor="pointer"
-          textAlign="center"
-          p="4"
-          borderRadius="md"
-          _hover={{ bg: "#D84924", color: "white" }}
-        >
-          <Image src={html} maxWidth="80%" />
-          <Text fontFamily='"Oswald", sans-serif' mt="2">HTML</Text>
-        </Box>
-        <Box
-          bg="RGBA(0, 0, 0, 0.08)"
-          cursor="pointer"
-          textAlign="center"
-          p="4"
-          borderRadius="md"
-          _hover={{ bg: "#1577B4", color: "white" }}
-        >
-          <Image src={css} maxWidth="80%" />
-          <Text fontFamily='"Oswald", sans-serif' mt="2">CSS</Text>
-        </Box>
-        <Box
-          bg="RGBA(0, 0, 0, 0.08)"
-          cursor="pointer"
-          textAlign="center"
-          p="4"
-          borderRadius="md"
-          _hover={{ bg: "#FFFF00" }}
-        >
-          <Image src={javascript} maxWidth="80%" />
-          <Text fontFamily='"Oswald", sans-serif' mt="2">JavaScript</Text>
-        </Box>
-        <Box
-          bg="RGBA(0, 0, 0, 0.08)"
-          cursor="pointer"
-          textAlign="center"
-          p="4"
-          borderRadius="md"
-          _hover={{ bg: "#00D8FF", color: "white" }}
-        >
-          <Image src={react} maxWidth="80%" />
-          <Text fontFamily='"Oswald", sans-serif' mt="2">React</Text>
-        </Box>
-        <Box
-          bg="RGBA(0, 0, 0, 0.08)"
-          cursor="pointer"
-          textAlign="center"
-          p="4"
-          borderRadius="md"
-          _hover={{ bg: "#1577B4", color: "white" }}
-        >
-          <Image src={github} maxWidth="80%" />
-          <Text fontFamily='"Oswald", sans-serif' mt="2">GitHub</Text>
-        </Box>
-      </Grid>
-    </Box>
-  );
+	return (
+		<section id="skill" className="px-[5%] pt-[25%] md:pt-[10%]">
+			{/* Heading */}
+			<h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-gray-900">
+				Skills
+			</h2>
+
+			{/* Groups */}
+			<div className="max-w-6xl mx-auto space-y-12">
+				{Object.entries(skillGroups).map(([group, skills]) => (
+					<div key={group}>
+						<h3 className="text-xl font-semibold text-gray-800 mb-6">
+							{group}
+						</h3>
+
+						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+							{skills.map((skill) => (
+								<div
+									key={skill.name}
+									className="
+                    flex flex-col items-center justify-center
+                    p-6
+                    bg-white
+                    rounded-xl
+                    border
+                    border-gray-200
+                    hover:border-blue-500
+                    hover:shadow-md
+                    transition
+                    cursor-default
+                  "
+								>
+									<div className="text-4xl text-blue-600 mb-2">
+										{skill.icon}
+									</div>
+									<span className="text-gray-800 font-medium">
+										{skill.name}
+									</span>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+	);
 }
 
 export default Skill;

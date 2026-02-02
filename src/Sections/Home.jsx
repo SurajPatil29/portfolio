@@ -1,47 +1,72 @@
-import React from 'react'
-import TypeWriter from '../Componants/TypeWriter'
-import { Heading, Box, Text } from '@chakra-ui/react'
+import TypeWriter from "../Componants/TypeWriter";
 
 function Home() {
-  return (
-    <>
- <Box 
-      id='home' 
-      textAlign="center" 
-      padding={{ base: "100px 0 0 0", md: "18% 0 0 0" }} 
-      width="100%" 
-      maxWidth="1200px" 
-      margin="0 auto"
-    >
-      <Heading 
-        padding={4} 
-        as='h3' 
-        size='2xl' 
-        fontFamily="sans-serif"
-        fontSize={{ base: '2xl', md: '3xl' }}
-      >
-        Hi &#x1F44B; I am Suraj Patil
-      </Heading>
-      <TypeWriter text={"Front-End Developer"} />
-      <Text 
-        padding={4} 
-        fontFamily="'Merriweather', serif" 
-        fontSize={{ base: 'md', md: '2xl' }}
-      >
-        🌟 Frontend Developer with a strong foundation in HTML, CSS,
-        and JavaScript, adept at creating responsive and engaging web
-        interfaces. Passionate about crafting seamless user experiences
-        and continuously expanding skills in modern frontend frameworks
-        like React. Dedicated to delivering visually appealing and
-        functional web solutions.
-      </Text>
-    </Box>
+	return (
+		<section
+			id="home"
+			className="
+        text-center
+        pt-[120px]
+        md:pt-[180px]
+        w-full
+        max-w-6xl
+        mx-auto
+        px-4
+      "
+		>
+			{/* Name */}
+			<h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+				Hi, I’m <span className="text-blue-600">Suraj Patil</span>
+			</h1>
 
+			{/* Role */}
+			<div className="mb-6">
+				<TypeWriter text="Full-Stack MERN Developer" />
+			</div>
 
-    </>
+			{/* Description */}
+			<p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl leading-8 mb-10">
+				Full-Stack MERN Developer with hands-on experience building scalable web
+				applications using <b>React</b>, <b>Node.js</b>, <b>Express</b>, and{" "}
+				<b>MongoDB</b>. Skilled in responsive UI design, RESTful API
+				development, authentication, and database integration, with a strong
+				focus on clean architecture and performance.
+			</p>
 
+			{/* CTA Buttons */}
+			<div className="flex justify-center gap-4 flex-wrap">
+				<a
+					href="#project"
+					className="
+            px-6 py-3
+            rounded-lg
+            bg-blue-600
+            text-white
+            font-medium
+            hover:bg-blue-700
+            transition
+          "
+				>
+					View Projects
+				</a>
 
-  )
+				<a
+					href="#contact"
+					className="
+            px-6 py-3
+            rounded-lg
+            border
+            border-gray-300
+            font-medium
+            hover:bg-gray-100
+            transition
+          "
+				>
+					Contact Me
+				</a>
+			</div>
+		</section>
+	);
 }
 
-export default Home
+export default Home;

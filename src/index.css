@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* index.css */
+body {
+	font-family: "Inter", system-ui, sans-serif;
+}
+
+.code-font {
+	font-family: "JetBrains Mono", monospace;
+}
+
+/* Swiper pagination container */
+.project-swiper .swiper-pagination {
+	bottom: 12px !important;
+}
+
+/* Default dot */
+.project-swiper .swiper-pagination-bullet {
+	width: 8px;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.4);
+	opacity: 1;
+	transition: all 0.3s ease;
+}
+
+/* Active dot */
+.project-swiper .swiper-pagination-bullet-active {
+	background: #ffffff;
+	transform: scale(1.2);
+}
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+	.project-swiper .swiper-pagination-bullet:hover {
+		background: rgba(255, 255, 255, 0.7);
+	}
+}
+
+.project-swiper .swiper-pagination-bullet-active {
+	width: 16px;
+	border-radius: 999px;
+}

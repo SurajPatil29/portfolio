@@ -1,31 +1,15 @@
-import React from 'react'
-import Navbar from './Navbar'
-import HeaderSectionLogo from './HeaderSectionLogo'
-import { HStack } from '@chakra-ui/react'
-
+import Navbar from "./Navbar";
+import HeaderSectionLogo from "./HeaderSectionLogo";
 
 function Header() {
-  return (
-    <>
-      <HStack justifyContent="space-around" 
-      bg="#CBD5E0"
-      color="black"
-      position="fixed"  
-      zIndex={1000}
-      top={0}
-      left={0}
-      right={0}
-      boxShadow="md"
-      >
-        <HeaderSectionLogo />
-        <Navbar />
-        
-
-      </HStack>
-
-    </>
-
-  )
+	return (
+		<header className="fixed top-0 w-full bg-white/80 backdrop-blur border-b z-50">
+			<div className="flex items-center justify-around px-6 py-3">
+				<HeaderSectionLogo />
+				<Navbar />
+			</div>
+		</header>
+	);
 }
 
-export default Header
+export default Header;

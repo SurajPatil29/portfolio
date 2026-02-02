@@ -1,11 +1,14 @@
-import React from 'react'
-import { Text, Box } from "@chakra-ui/react"
 function HeaderSectionLogo() {
-    return (
-
-        <Box p={4}>
-            <Text fontSize="2xl" fontFamily="'Dancing Script', cursive">&lt; Suraj Patil /&gt;</Text>
-        </Box>)
+	return (
+		<div className="p-4">
+			<span
+				className="text-2xl"
+				style={{ fontFamily: "'Dancing Script', cursive" }}
+			>
+				&lt; Suraj Patil /&gt;
+			</span>
+		</div>
+	);
 }
 
-export default HeaderSectionLogo
+export default HeaderSectionLogo;

@@ -1,69 +1,83 @@
-import { Box, HStack, Menu, MenuButton, MenuList, MenuItem, IconButton } from "@chakra-ui/react";
-import { HamburgerIcon, AddIcon, ExternalLinkIcon, RepeatIcon, EditIcon } from "@chakra-ui/icons";
-import { useMediaQuery } from "@chakra-ui/react";
-import Resume from "../../Sections/Resume";
-
-
+import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import { FiMenu } from "react-icons/fi";
 
 function Navbar() {
-  const [isLargeThan750] = useMediaQuery("(min-width: 750px)")
-  const resumeDownload = "https://drive.google.com/uc?export=download&id=10licJK7TbuIdn3Mv53Be0MV2iJIz-FKO"
-  return (
-    <>
-      <Box display="flex" p={4} >
-        {
-          isLargeThan750 ? (
-            <HStack justifyContent="space-between" spacing={8}>
-              <a href="#home" > Home </a>
-              <a href="#about" > About </a>
-              <a href="#skill" > Skill </a>
-              <a href="#project" > Project </a>
+	const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 750);
+	const [anchorEl, setAnchorEl] = useState(null);
 
-              <a href="#contact" > Contact </a>
-              <Resume />
+	const resumeDownload =
+		"https://drive.google.com/uc?export=download&id=10licJK7TbuIdn3Mv53Be0MV2iJIz-FKO";
 
-            </HStack>
-          ) : (
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                variant="outline"
-                border=" 3px solid white"
-              />
-              <MenuList>
-                <MenuItem as="a" href="#home" icon={<AddIcon />}>
-                  Home
-                </MenuItem>
-                <MenuItem as="a" href="#about" icon={<ExternalLinkIcon />}>
-                  About
-                </MenuItem>
-                <MenuItem as="a" href="#skill" icon={<RepeatIcon />}>
-                  Skill
-                </MenuItem>
-                <MenuItem as="a" href="#project" icon={<EditIcon />}>
-                  Project
-                </MenuItem>
-                <MenuItem as="a" href="#contact" icon={<ExternalLinkIcon />}>
-                  Contact
-                </MenuItem>
-                <MenuItem as="a" href={resumeDownload} icon={<EditIcon />}>
-                  Resume
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          )
-        }
+	useEffect(() => {
+		const handleResize = () => setIsDesktop(window.innerWidth >= 750);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
+	const menuItems = [
+		{ label: "Home", href: "#home" },
+		{ label: "About", href: "#about" },
+		{ label: "Skill", href: "#skill" },
+		{ label: "Project", href: "#project" },
+		{ label: "Contact", href: "#contact" },
+	];
 
+	return (
+		<div className="p-4">
+			{isDesktop ? (
+				<nav className="flex items-center gap-8">
+					{menuItems.map((item) => (
+						<a
+							key={item.label}
+							href={item.href}
+							className="text-gray-700 hover:text-blue-600 font-medium relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all"
+						>
+							{item.label}
+						</a>
+					))}
 
+					<Button variant="contained" color="primary" href={resumeDownload}>
+						Resume
+					</Button>
+				</nav>
+			) : (
+				<>
+					<IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+						<FiMenu />
+					</IconButton>
 
-      </Box>
+					<Menu
+						anchorEl={anchorEl}
+						open={Boolean(anchorEl)}
+						onClose={() => setAnchorEl(null)}
+					>
+						{menuItems.map((item) => (
+							<MenuItem
+								key={item.label}
+								component="a"
+								href={item.href}
+								onClick={() => setAnchorEl(null)}
+							>
+								{item.label}
+							</MenuItem>
+						))}
 
-    </>
-
-  )
+						<MenuItem
+							component="a"
+							href={resumeDownload}
+							onClick={() => setAnchorEl(null)}
+						>
+							Resume
+						</MenuItem>
+					</Menu>
+				</>
+			)}
+		</div>
+	);
 }
 
-export default Navbar
+export default Navbar;
