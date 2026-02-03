@@ -10,7 +10,7 @@ function Navbar() {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	const resumeDownload =
-		"https://drive.google.com/uc?export=download&id=10licJK7TbuIdn3Mv53Be0MV2iJIz-FKO";
+		"https://drive.google.com/uc?export=download&id=1M0J5eOeyb2IXfLMeQejJT6iPj1yIVG4w";
 
 	useEffect(() => {
 		const handleResize = () => setIsDesktop(window.innerWidth >= 750);

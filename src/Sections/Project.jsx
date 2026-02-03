@@ -36,7 +36,7 @@ function Project() {
 				<p className="text-sm text-gray-500 mb-2">
 					Role:{" "}
 					<span className="font-medium text-gray-700">
-						Full-Stack Developer
+						Full-Stack Developer (solo)
 					</span>
 				</p>
 
